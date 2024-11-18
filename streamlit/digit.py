@@ -5,8 +5,6 @@ model = load_learner("/home/t1nnur/.fastai/data/mnist_png/mnist.pkl")
 
 st.title("Digit prediction")
 
-print(type(model))
-
 
 def main():
     file = st.file_uploader("Upload your file:")
@@ -15,6 +13,7 @@ def main():
         return
 
     img = PILImage.create(file)
+    img.resize((28, 28))
 
     prediction, predict_id, percents = model.predict(img)
 
